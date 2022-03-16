@@ -49,9 +49,6 @@ const settings = {
         slidesToScroll: 1
       }
     }
-    // You can unslick at a given breakpoint now by adding:
-    // settings: "unslick"
-    // instead of a settings object
   ]
 };
 
@@ -100,6 +97,108 @@ const dataChart = [
     uv: 3490,
     pv: 4300,
     amt: 2100
+  },
+  {
+    name: "Page F",
+    uv: 2390,
+    pv: 3800,
+    amt: 2500
+  },
+  {
+    name: "Page F",
+    uv: 2390,
+    pv: 3800,
+    amt: 2500
+  },
+  {
+    name: "Page F",
+    uv: 2390,
+    pv: 3800,
+    amt: 2500
+  },
+  {
+    name: "Page F",
+    uv: 2390,
+    pv: 3800,
+    amt: 2500
+  },
+  {
+    name: "Page F",
+    uv: 2390,
+    pv: 3800,
+    amt: 2500
+  },
+  {
+    name: "Page F",
+    uv: 2390,
+    pv: 3800,
+    amt: 2500
+  },
+  {
+    name: "Page F",
+    uv: 2390,
+    pv: 3800,
+    amt: 2500
+  },
+  {
+    name: "Page F",
+    uv: 2390,
+    pv: 3800,
+    amt: 2500
+  },
+  {
+    name: "Page F",
+    uv: 2390,
+    pv: 3800,
+    amt: 2500
+  },
+  {
+    name: "Page F",
+    uv: 2390,
+    pv: 3800,
+    amt: 2500
+  },
+  {
+    name: "Page F",
+    uv: 2390,
+    pv: 3800,
+    amt: 2500
+  },
+  {
+    name: "Page F",
+    uv: 2390,
+    pv: 3800,
+    amt: 2500
+  },
+  {
+    name: "Page F",
+    uv: 2390,
+    pv: 3800,
+    amt: 2500
+  },
+  {
+    name: "Page F",
+    uv: 2390,
+    pv: 3800,
+    amt: 2500
+  },
+  {
+    name: "Page F",
+    uv: 2390,
+    pv: 3800,
+    amt: 2500
+  },
+  {
+    name: "Page F",
+    uv: 2390,
+    pv: 3800,
+    amt: 2500
+  },
+  {
+    name: "Page F",
+    uv: 2390,
+    pv: 3800,
+    amt: 2500
   }
 ];
 
@@ -178,14 +277,18 @@ function App() {
   const didMount = useRef(false);
   const [lat, setLat] = useState('');
   const [long, setLong] = useState('');
-  const [data, setData] = useState({});
+  const [dataWeather, setDataWeather] = useState({});
+  const [dataUser, setDataUser] = useState({});
   
   useEffect(() =>{
 
     axios.get('https://geolocation-db.com/jsonp/')
-    .then(function (response) {
-      // handle success
-      console.log(JSON.parse(response.data.replace('callback(','').replace(')','')));
+    .then(function (res) {
+      const geoData = JSON.parse(res.data.replace('callback(','').replace(')',''));
+
+      setDataUser(geoData);
+      setLong(geoData.longitude);
+      setLat(geoData.latitude);
     })
     .catch(function (error) {
       // handle error
@@ -209,7 +312,7 @@ function App() {
     if (didMount.current) {
 
       api(`lat=${lat}&lon=${long}`).then((res) => {
-        setData(res);
+        setDataWeather(res);
       });
     } else {
       didMount.current = true;
@@ -219,11 +322,11 @@ function App() {
 
   useEffect(() =>{
 
-    if(Object.keys(data).length > 1){
-      console.log(data);
+    if(Object.keys(dataWeather).length > 1){
+      console.log(dataWeather);
     }
   
-  },[data]);
+  },[dataWeather]);
 
   return (
   <>
@@ -232,13 +335,13 @@ function App() {
     <ImageBackground>
       <Wrapper className="container container-wind mx-auto text-center font-bold">
           <h2 className='text-3xl'>
-            Florianópolis  <ImLocation className='inline'/>
+            {dataUser.city}  <ImLocation className='inline'/>
           </h2>
           <span className='text-5xl m-4 block'>
-            21°
+            {Math.round(dataWeather.current.temp)}°
           </span>
           <span className='m-2 block'>
-             Feels like 19°
+             Feels like {Math.round(dataWeather.current.feels_like)}°
           </span>
           <MinMaxContainer>
             <span>
@@ -250,10 +353,10 @@ function App() {
           </MinMaxContainer>
           <WindHumContainer>
             <div>
-                <FaWind className='inline'/> Wind 5.14 km/h
+                <FaWind className='inline'/> Wind {dataWeather.current.wind_speed} km/h
             </div>
             <div>
-                <GiWaterDrop className='inline'/> Hum 75 %
+                <GiWaterDrop className='inline'/> Hum {Math.round(dataWeather.current.humidity)} %
             </div>
           </WindHumContainer>
 
