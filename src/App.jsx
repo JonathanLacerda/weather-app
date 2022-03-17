@@ -7,7 +7,7 @@ import {
 import { 
   GlobalStyle ,
   Wrapper,
-  ImageBackground,
+  backgroundApp,
   WindHumContainer,
   GraphicContainer,
   MinMaxContainer
@@ -50,7 +50,7 @@ function App() {
   return (
   <>
     <GlobalStyle/>
-    <ImageBackground>
+    <backgroundApp>
         <Wrapper className="container container-wind mx-auto text-center font-bold">
             {Object.keys(dataWeather).length > 1 ? 
                 <>
@@ -84,7 +84,7 @@ function App() {
             }
 
         </Wrapper>
-    </ImageBackground>
+    </backgroundApp>
   </>
   )
 }
