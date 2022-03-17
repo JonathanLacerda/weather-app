@@ -28,7 +28,7 @@ export const Wrapper = styled.section`
   }
 `;
 
-export const ImageBackground = styled.div`
+export const backgroundApp = styled.div`
   position: fixed;
   padding: 4em;
   width: 100%;
