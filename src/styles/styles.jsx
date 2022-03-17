@@ -1,5 +1,4 @@
 import styled, {createGlobalStyle} from 'styled-components';
-import rain from '../imgs/rain.gif';
 
 export const GlobalStyle = createGlobalStyle`
   html,
@@ -31,11 +30,31 @@ export const Wrapper = styled.section`
 
 export const ImageBackground = styled.div`
   position: fixed;
-  background-image: url(${rain});
   padding: 4em;
   width: 100%;
-  background-size: cover;
   height: 100%;
+  background: linear-gradient(327deg, #f38143, #377898, #f38143);
+  background-size: 600% 600%;
+
+  -webkit-animation: AnimationName 30s ease infinite;
+  -moz-animation: AnimationName 30s ease infinite;
+  animation: AnimationName 30s ease infinite;
+
+  @-webkit-keyframes AnimationName {
+    0%{background-position:24% 0%}
+    50%{background-position:77% 100%}
+    100%{background-position:24% 0%}
+  }
+  @-moz-keyframes AnimationName {
+      0%{background-position:24% 0%}
+      50%{background-position:77% 100%}
+      100%{background-position:24% 0%}
+  }
+  @keyframes AnimationName {
+      0%{background-position:24% 0%}
+      50%{background-position:77% 100%}
+      100%{background-position:24% 0%}
+  }
 `;
 
 export const VideoBackground = styled.div`
