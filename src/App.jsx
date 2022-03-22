@@ -7,10 +7,12 @@ import {
 import { 
   GlobalStyle ,
   Wrapper,
-  backgroundApp,
+  BackgroundApp,
   WindHumContainer,
   GraphicContainer,
-  MinMaxContainer
+  MinMaxContainer,
+  DiarySliderConteiner,
+  Title
 } from './styles/styles';
 import './index.css';
 
@@ -21,6 +23,9 @@ import MaxMin from './components/MaxMin/MaxMin';
 import { ImLocation } from 'react-icons/im';
 import { FaWind } from 'react-icons/fa';    
 import { GiWaterDrop } from 'react-icons/gi';
+import { BsDropletHalf } from 'react-icons/bs';
+
+import {WiStrongWind} from 'react-icons/wi';
 
 import { apiWeather } from './services/apiWeather'
 import { apiGeoLocation } from './services/apiGeoLocation'
@@ -31,13 +36,13 @@ function App() {
   const [dataWeather, setDataWeather] = useState({});
   const [dataUser, setDataUser] = useState({});
   
-    useEffect(() =>{
+    useEffect(() => {
         apiGeoLocation().then((res) => {
             setDataUser(res);
         });
     },[]);
 
-    useEffect(() =>{
+    useEffect(() => {
         if (didMount.current) {
             apiWeather(`lat=${dataUser.latitude}&lon=${dataUser.longitude}`).then((res) => {
                 setDataWeather(res);
@@ -50,41 +55,51 @@ function App() {
   return (
   <>
     <GlobalStyle/>
-    <backgroundApp>
+    <BackgroundApp>
         <Wrapper className="container container-wind mx-auto text-center font-bold">
             {Object.keys(dataWeather).length > 1 ? 
                 <>
-                    <h2 className='text-3xl'>
-                        {dataUser.city}  <ImLocation className='inline'/>
+                    <h2 className='text-4xl font-thin2'>
+                        {dataUser.city} 
                     </h2>
-                    <span className='text-5xl m-4 block'>
+                    <span className='text-6xl m-4 block text-condensed font-thin'>
                         {Math.round(dataWeather.current.temp)}°
                     </span>
                     <span className='m-2 block'>
                         Feels like {Math.round(dataWeather.current.feels_like)}°
                     </span>
                     <MinMaxContainer>
-                        <MaxMin />
+                        <MaxMin data={dataWeather.daily[0]}/>
                     </MinMaxContainer>
                     <WindHumContainer>
                         <div>
-                            <FaWind className='inline'/> Wind {dataWeather.current.wind_speed} km/h
+                            <WiStrongWind className='inline wind-font'/> {dataWeather.current.wind_speed} km/h
                         </div>
                         <div>
-                            <GiWaterDrop className='inline'/> Hum {Math.round(dataWeather.current.humidity)} %
+                            <BsDropletHalf className='inline'/> {Math.round(dataWeather.current.humidity)} %
                         </div>
                     </WindHumContainer>
+                    <Title>
+                        Next Hours
+                        <span></span>
+                    </Title>
+                    <DiarySliderConteiner>
+                        <DiarySlider />
+                    </DiarySliderConteiner>
+                    <Title>
+                        Next Days
+                        <span></span>
+                    </Title>
                     <GraphicContainer>
-                        <HourlyChart />
+                        <HourlyChart data={dataWeather.hourly}/>
                     </GraphicContainer>
-                    <DiarySlider />
                 </>
             : 
                 'CARREGANDO'
             }
 
         </Wrapper>
-    </backgroundApp>
+    </BackgroundApp>
   </>
   )
 }

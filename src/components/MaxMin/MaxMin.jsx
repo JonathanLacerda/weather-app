@@ -3,14 +3,20 @@ import {
     FaLongArrowAltDown 
 } from 'react-icons/fa';
 
-export default function MaxMin() {
+
+import { BiUpArrow, BiDownArrow } from 'react-icons/bi';
+
+export default function MaxMin(props) {
+    const minTempDay = Math.round(props.data.temp.min);
+    const maxTempDay = Math.round(props.data.temp.max);
+
     return (
         <>
             <span>
-                <FaLongArrowAltUp className='inline'/> 29°
+                <BiUpArrow className='inline'/> {maxTempDay}°
             </span>
             <span>
-                <FaLongArrowAltDown className='inline'/> 17°
+                <BiDownArrow className='inline'/> {minTempDay}°
             </span>
         </>
     )

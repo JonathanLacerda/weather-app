@@ -1,160 +1,92 @@
+import { useState,useEffect } from "react";
+
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
 const dataChart = [
   {
-    name: "Page A",
-    uv: 4000,
-    pv: 2400,
-    amt: 2400
-  },
-  {
-    name: "Page B",
-    uv: 3000,
-    pv: 1398,
-    amt: 2210
-  },
-  {
-    name: "Page C",
-    uv: 2000,
-    pv: 9800,
-    amt: 2290
-  },
-  {
-    name: "Page D",
-    uv: 2780,
-    pv: 3908,
-    amt: 2000
-  },
-  {
-    name: "Page E",
-    uv: 1890,
-    pv: 4800,
-    amt: 2181
+    name: "Page F",
+    pv: 20
   },
   {
     name: "Page F",
-    uv: 2390,
-    pv: 3800,
-    amt: 2500
-  },
-  {
-    name: "Page G",
-    uv: 3490,
-    pv: 4300,
-    amt: 2100
+    pv: 18
   },
   {
     name: "Page F",
-    uv: 2390,
-    pv: 3800,
-    amt: 2500
+    pv: 18
   },
   {
     name: "Page F",
-    uv: 2390,
-    pv: 3800,
-    amt: 2500
+    pv: 17
   },
   {
     name: "Page F",
-    uv: 2390,
-    pv: 3800,
-    amt: 2500
+    pv: 19
   },
   {
     name: "Page F",
-    uv: 2390,
-    pv: 3800,
-    amt: 2500
+    pv: 18
   },
   {
     name: "Page F",
-    uv: 2390,
-    pv: 3800,
-    amt: 2500
+    pv: 22
   },
   {
     name: "Page F",
-    uv: 2390,
-    pv: 3800,
-    amt: 2500
+    pv: 18
   },
   {
     name: "Page F",
-    uv: 2390,
-    pv: 3800,
-    amt: 2500
+    pv: 19
   },
   {
     name: "Page F",
-    uv: 2390,
-    pv: 3800,
-    amt: 2500
-  },
-  {
-    name: "Page F",
-    uv: 2390,
-    pv: 3800,
-    amt: 2500
-  },
-  {
-    name: "Page F",
-    uv: 2390,
-    pv: 3800,
-    amt: 2500
-  },
-  {
-    name: "Page F",
-    uv: 2390,
-    pv: 3800,
-    amt: 2500
-  },
-  {
-    name: "Page F",
-    uv: 2390,
-    pv: 3800,
-    amt: 2500
-  },
-  {
-    name: "Page F",
-    uv: 2390,
-    pv: 3800,
-    amt: 2500
-  },
-  {
-    name: "Page F",
-    uv: 2390,
-    pv: 3800,
-    amt: 2500
-  },
-  {
-    name: "Page F",
-    uv: 2390,
-    pv: 3800,
-    amt: 2500
-  },
-  {
-    name: "Page F",
-    uv: 2390,
-    pv: 3800,
-    amt: 2500
-  },
-  {
-    name: "Page F",
-    uv: 2390,
-    pv: 3800,
-    amt: 2500
+    pv: 24
   }
 ];
 
 
-export default function HourlyChart() {
+export default function HourlyChart(props) {
+
+	const [hoursToChart , sethoursToChart] = useState([]);
+
+	const getHour = () => {
+		const d = new Date();
+		const hour = d.getHours();
+		
+		return hour
+	}
+
+	const getRemainingHours = (hourNow) => {
+		return 24 - hourNow;
+	} 
+
+	const returnRemainingHoursArray = () => {
+		const remainingHour = getRemainingHours(getHour()) - 1;
+		const remainingHourData = [];
+		
+	
+		for (let index = 0; index < 24; index++) {
+			remainingHourData.push(props.data[index]);
+		}
+
+		sethoursToChart(remainingHourData);
+
+	}
+
+	useEffect(() => {
+		returnRemainingHoursArray();
+	},[]);
+
+	useEffect(() => {
+		console.log(hoursToChart);
+	},[hoursToChart]);
 
     return(
         <ResponsiveContainer width={'100%'} height={150}>
-            <LineChart width={500} height={100} data={dataChart}>
+            <LineChart width={500} height={100} data={hoursToChart}>
             <Tooltip/>
-            <Line type="monotone" dataKey="pv" stroke="#000" strokeWidth={1.5} />
+            <Line type="monotone" dataKey="temp" stroke="#000" strokeWidth={1.5} />
             </LineChart>
         </ResponsiveContainer>
     )

@@ -7,7 +7,8 @@ export const GlobalStyle = createGlobalStyle`
   }
   body {
     background: #f7f7f7;
-    font-family: 'Quicksand';
+    font-family: 'Raleway';
+    font-weight: 200;
   }
 `
 
@@ -28,14 +29,13 @@ export const Wrapper = styled.section`
   }
 `;
 
-export const backgroundApp = styled.div`
+export const BackgroundApp = styled.div`
   position: fixed;
   padding: 4em;
   width: 100%;
   height: 100%;
   background: linear-gradient(327deg, #f38143, #377898, #f38143);
   background-size: 600% 600%;
-
   -webkit-animation: AnimationName 30s ease infinite;
   -moz-animation: AnimationName 30s ease infinite;
   animation: AnimationName 30s ease infinite;
@@ -73,11 +73,15 @@ export const VideoBackground = styled.div`
 export const WindHumContainer = styled.div`
   display: flex;
   justify-content: space-between;
-  flex-direction: column;
-  max-width: 150px;
   margin: 0 auto;
   align-items: baseline;
   margin-top: 10px;
+  flex-direction: row;
+  align-items: center;
+
+   > div {
+     min-width: 50%;
+   }
 `;
 
 export const GraphicContainer = styled.div`
@@ -85,6 +89,36 @@ export const GraphicContainer = styled.div`
 `;
 
 export const MinMaxContainer = styled.div`
+  font-size: 1.2rem;
+`;
 
+export const DiarySliderConteiner = styled.div`
+  margin: 5px 0 0px;
+  
+  .slick-slider {
+    display: flex;
+    align-items: center;
+  }
+`;
+
+export const Title = styled.h3`
+  font-size: 13px;
+  text-align: left;
+  display: inline-block;
+  margin-top: 30px;
+  width: 100%;
+  margin-bottom: 15px;
+  position: relative;
+
+  span {
+    display: inline-block;
+    width: 70%;
+    height: 1px;
+    background: #000;
+    position: absolute;
+    top: 10px;
+    opacity: 0.2;
+    left: 70px;
+  }
 `;
 
