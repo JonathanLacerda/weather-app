@@ -16,7 +16,7 @@ import {
 } from './styles/styles';
 import './index.css';
 
-import DiarySlider from './components/DiarySlider/DiarySlider';
+import HourSlider from './components/HourSlider/HourSlider';
 import HourlyChart from './components/HourlyChart/HourlyChart';
 import MaxMin from './components/MaxMin/MaxMin';
 import BackgroundApp from './components/BackgroundApp/BackgroundApp';
@@ -57,11 +57,9 @@ function App() {
   <>
     <GlobalStyle/>
     <BackgroundAppContainer>
-    {Object.keys(dataWeather).length > 1 ? 
-        <BackgroundApp data={dataWeather.current.weather[0]} />
-    : ''}
-        
-
+        {Object.keys(dataWeather).length > 1 ? 
+            <BackgroundApp data={dataWeather.current.weather[0]} />
+        : ''} 
         <Wrapper className="container container-wind mx-auto text-center font-bold">
             {Object.keys(dataWeather).length > 1 ? 
                 <>
@@ -90,7 +88,7 @@ function App() {
                         <span></span>
                     </Title>
                     <DiarySliderConteiner>
-                        <DiarySlider />
+                        <HourSlider data={dataWeather.hourly}/>
                     </DiarySliderConteiner>
                     <Title>
                         Next Days
