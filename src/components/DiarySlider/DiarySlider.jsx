@@ -1,13 +1,46 @@
 import Slider from "react-slick";
 
-import {FaCloudShowersHeavy} from 'react-icons/fa';
+import { FaCloudShowersHeavy } from 'react-icons/fa';
+import { BiRightArrow, BiLeftArrow } from 'react-icons/bi'
+
+const ArrowRight = (props) => {
+  const { onClick } = props;
+
+  return (
+    <>
+      <span
+        className="opacity-50"
+        onClick={onClick}
+      >
+        <BiRightArrow />
+      </span>
+    </>
+  )
+};
+
+const ArrowLeft = (props) => {
+  const { onClick } = props;
+
+  return (
+    <>
+      <span
+        className="opacity-50"
+        onClick={onClick}
+      >
+        <BiLeftArrow />
+      </span>
+    </>
+  )
+};
 
 const settings = {
-    dots: true,
+    dots: false,
     infinite: false,
     speed: 300,
     slidesToShow: 4,
     slidesToScroll: 4,
+    nextArrow: <ArrowRight />,
+    prevArrow: <ArrowLeft />,
     responsive: [
       {
         breakpoint: 1024,
@@ -28,8 +61,8 @@ const settings = {
       {
         breakpoint: 480,
         settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1
+          slidesToShow: 2,
+          slidesToScroll: 2
         }
       }
     ]
