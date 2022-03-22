@@ -7,7 +7,7 @@ import {
 import { 
   GlobalStyle ,
   Wrapper,
-  BackgroundApp,
+  BackgroundAppContainer,
   WindHumContainer,
   GraphicContainer,
   MinMaxContainer,
@@ -19,6 +19,7 @@ import './index.css';
 import DiarySlider from './components/DiarySlider/DiarySlider';
 import HourlyChart from './components/HourlyChart/HourlyChart';
 import MaxMin from './components/MaxMin/MaxMin';
+import BackgroundApp from './components/BackgroundApp/BackgroundApp';
 
 import { ImLocation } from 'react-icons/im';
 import { FaWind } from 'react-icons/fa';    
@@ -55,7 +56,12 @@ function App() {
   return (
   <>
     <GlobalStyle/>
-    <BackgroundApp>
+    <BackgroundAppContainer>
+    {Object.keys(dataWeather).length > 1 ? 
+        <BackgroundApp data={dataWeather.current.weather[0]} />
+    : ''}
+        
+
         <Wrapper className="container container-wind mx-auto text-center font-bold">
             {Object.keys(dataWeather).length > 1 ? 
                 <>
@@ -99,7 +105,7 @@ function App() {
             }
 
         </Wrapper>
-    </BackgroundApp>
+    </BackgroundAppContainer>
   </>
   )
 }
