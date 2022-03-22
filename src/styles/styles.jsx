@@ -29,12 +29,12 @@ export const Wrapper = styled.section`
   }
 `;
 
-export const BackgroundApp = styled.div`
+export const BackgroundAppContainer = styled.div`
   position: fixed;
   padding: 4em;
   width: 100%;
   height: 100%;
-  background: linear-gradient(327deg, #f38143, #377898, #f38143);
+  /* background: linear-gradient(327deg, #f38143, #377898, #f38143);
   background-size: 600% 600%;
   -webkit-animation: AnimationName 30s ease infinite;
   -moz-animation: AnimationName 30s ease infinite;
@@ -54,6 +54,16 @@ export const BackgroundApp = styled.div`
       0%{background-position:24% 0%}
       50%{background-position:77% 100%}
       100%{background-position:24% 0%}
+  } */
+
+  .image {
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    left: 0;
+    top: 0;
   }
 `;
 
