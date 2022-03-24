@@ -3,7 +3,6 @@ import {
     FaLongArrowAltDown 
 } from 'react-icons/fa';
 
-
 import { BiUpArrow, BiDownArrow } from 'react-icons/bi';
 
 export default function MaxMin(props) {
