@@ -17,7 +17,7 @@ import {
 import './index.css';
 
 import HourSlider from './components/HourSlider/HourSlider';
-import HourlyChart from './components/HourlyChart/HourlyChart';
+import DailyChart from './components/DailyChart/DailyChart';
 import MaxMin from './components/MaxMin/MaxMin';
 import BackgroundApp from './components/BackgroundApp/BackgroundApp';
 
@@ -95,7 +95,7 @@ function App() {
                         <span></span>
                     </Title>
                     <GraphicContainer>
-                        <HourlyChart data={dataWeather.hourly}/>
+                        <DailyChart data={dataWeather.daily}/>
                     </GraphicContainer>
                 </>
             : 
