@@ -19,7 +19,6 @@ import './index.css';
 import HourSlider from './components/HourSlider/HourSlider';
 import DailyChart from './components/DailyChart/DailyChart';
 import MaxMin from './components/MaxMin/MaxMin';
-import BackgroundApp from './components/BackgroundApp/BackgroundApp';
 
 import { ImLocation } from 'react-icons/im';
 import { FaWind } from 'react-icons/fa';    
@@ -57,9 +56,6 @@ function App() {
   <>
     <GlobalStyle/>
     <BackgroundAppContainer>
-        {Object.keys(dataWeather).length > 1 ? 
-            <BackgroundApp data={dataWeather.current.weather[0]} />
-        : ''} 
         <Wrapper className="container container-wind mx-auto text-center font-bold">
             {Object.keys(dataWeather).length > 1 ? 
                 <>
