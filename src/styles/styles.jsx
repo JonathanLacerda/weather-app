@@ -132,3 +132,15 @@ export const Title = styled.h3`
   }
 `;
 
+export const TooltipCustom = styled.div`
+	background-color: #0000008f;
+	color: #000;
+	background: rgba( 0,0,0,0.45 );
+	-webkit-backdrop-filter: blur( 10px );
+	backdrop-filter: blur( 10px );
+	-webkit-backdrop-filter: blur( 10px );
+	border-radius: 10px;
+	border: 1px solid rgba( 255,255,255,0.18 );
+	padding: 16px;
+`;
+

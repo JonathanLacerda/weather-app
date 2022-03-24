@@ -25,3 +25,16 @@
     font-size: 24px;
 }
 
+.recharts-tooltip-wrapper.recharts-tooltip-wrapper-right.recharts-tooltip-wrapper-bottom,
+.recharts-tooltip-wrapper.recharts-tooltip-wrapper-right.recharts-tooltip-wrapper-top,
+.recharts-tooltip-wrapper.recharts-tooltip-wrapper-left.recharts-tooltip-wrapper-bottom,
+.recharts-tooltip-wrapper.recharts-tooltip-wrapper-left.recharts-tooltip-wrapper-top{
+    transform: none !important;
+    bottom: 0;
+    top: auto !important;
+    width: 100%;
+}
+
+path.recharts-curve.recharts-tooltip-cursor {
+    display: none !important;
+}
