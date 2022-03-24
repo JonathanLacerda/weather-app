@@ -30,11 +30,20 @@
 .recharts-tooltip-wrapper.recharts-tooltip-wrapper-left.recharts-tooltip-wrapper-bottom,
 .recharts-tooltip-wrapper.recharts-tooltip-wrapper-left.recharts-tooltip-wrapper-top{
     transform: none !important;
-    bottom: 0;
+    bottom: -16px;
     top: auto !important;
     width: 100%;
+    visibility: visible !important;
 }
 
 path.recharts-curve.recharts-tooltip-cursor {
     display: none !important;
+}
+
+.slick-disabled {
+    visibility: hidden !important;
+}
+
+circle.recharts-dot.recharts-line-dot {
+    visibility: hidden;
 }

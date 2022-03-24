@@ -1,5 +1,7 @@
 import styled, {createGlobalStyle} from 'styled-components';
 
+import nuvem from '../imgs/nuvem.png';
+
 export const GlobalStyle = createGlobalStyle`
   html,
   body {
@@ -34,7 +36,7 @@ export const BackgroundAppContainer = styled.div`
   padding: 4em;
   width: 100%;
   height: 100%;
-  /* background: linear-gradient(327deg, #f38143, #377898, #f38143);
+  background: linear-gradient(327deg, #f38143, #377898, #f38143);
   background-size: 600% 600%;
   -webkit-animation: AnimationName 30s ease infinite;
   -moz-animation: AnimationName 30s ease infinite;
@@ -54,7 +56,7 @@ export const BackgroundAppContainer = styled.div`
       0%{background-position:24% 0%}
       50%{background-position:77% 100%}
       100%{background-position:24% 0%}
-  } */
+  }
 
   .image {
     width: 100%;
@@ -64,6 +66,8 @@ export const BackgroundAppContainer = styled.div`
     position: absolute;
     left: 0;
     top: 0;
+
+	display: none;;
   }
 `;
 
@@ -133,14 +137,40 @@ export const Title = styled.h3`
 `;
 
 export const TooltipCustom = styled.div`
-	background-color: #0000008f;
-	color: #000;
-	background: rgba( 0,0,0,0.45 );
-	-webkit-backdrop-filter: blur( 10px );
-	backdrop-filter: blur( 10px );
-	-webkit-backdrop-filter: blur( 10px );
-	border-radius: 10px;
-	border: 1px solid rgba( 255,255,255,0.18 );
-	padding: 16px;
+    background-color: #0000008f;
+    color: #000;
+    background: rgba( 0,0,0,0.45 );
+    -webkit-backdrop-filter: blur( 10px );
+    -webkit-backdrop-filter: blur( 10px );
+    backdrop-filter: blur( 10px );
+    -webkit-backdrop-filter: blur( 10px );
+    border-radius: 10px;
+    padding: 16px;
+    -webkit-animation: AnimationName 30s ease infinite;
+    -moz-animation: AnimationName 30s ease infinite;
+    -webkit-animation: AnimationName 30s ease infinite;
+    animation: AnimationName 30s ease infinite;
+    background-image: url(${nuvem});
+    background-size: 222%;
+	/* text-shadow: 0px 1px #fff; */
+	min-height: 105px;
+}
+
+  @-webkit-keyframes AnimationName {
+    0%{background-position:24% 20%}
+    50%{background-position:77% 20%}
+    100%{background-position:24% 20%}
+  }
+  @-moz-keyframes AnimationName {
+      0%{background-position:24% 20%}
+      50%{background-position:77% 20%}
+      100%{background-position:24% 20%}
+  }
+  @keyframes AnimationName {
+      0%{background-position:24% 20%}
+      50%{background-position:77% 20%}
+      100%{background-position:24% 20%}
+  }
 `;
+
 

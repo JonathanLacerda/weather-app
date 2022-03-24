@@ -9,12 +9,12 @@ import { FaCloudShowersHeavy } from 'react-icons/fa';
 import { BiRightArrow, BiLeftArrow } from 'react-icons/bi'
 
 const ArrowRight = (props) => {
-  const { onClick } = props;
+  const { className, onClick } = props;
 
   return (
     <>
       <span
-        className="opacity-50"
+        className={`${(className.includes('slick-disabled') ? 'slick-disabled' : '')} opacity-50`}
         onClick={onClick}
       >
         <BiRightArrow />
@@ -24,12 +24,12 @@ const ArrowRight = (props) => {
 };
 
 const ArrowLeft = (props) => {
-  const { onClick } = props;
+  const { className, onClick } = props;
 
   return (
     <>
       <span
-        className="opacity-50"
+        className={`${(className.includes('slick-disabled') ? 'slick-disabled' : '')} opacity-50`}
         onClick={onClick}
       >
         <BiLeftArrow />
@@ -79,8 +79,6 @@ export default function HourSlider(props) {
 	const date = new Date();
 	const hour = date.getHours();
 	const remeiningHours = 24 - hour;
-
-	console.log(remeiningHours);
 
 	return(
 		<Slider {...settings}>
