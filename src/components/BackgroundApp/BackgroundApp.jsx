@@ -1,5 +1,4 @@
 import { useState,useEffect } from 'react'
-import FadeIn from 'react-fade-in';
 
 import image from '../../imgs/rain.gif';
 
@@ -21,17 +20,13 @@ export default function BackgroundApp(props) {
 
     return (
         <>
-        
-            <FadeIn>
-                <span 
-                    className='image'
-                    style={{
-                    backgroundImage : `url(${gif})`
-                }}>
+            <span 
+                className='image'
+                style={{
+                backgroundImage : `url(${gif})`
+            }}>
 
-                </span>
-            </FadeIn>
-
+            </span>
         </>
     )
 }
