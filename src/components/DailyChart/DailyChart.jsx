@@ -1,30 +1,37 @@
-import { useState,useEffect } from "react";
-
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
 import { TooltipCustom } from './../../styles/styles';
 
 import { BiUpArrow, BiDownArrow } from 'react-icons/bi';
 
-export default function DailyChart(props) {
+import { isMobile } from 'react-device-detect';
 
-	const [labelLaste, setLabelLast] = useState(0);
+export default function DailyChart(props) {
 
 	const getDate = () => {
 		const d = new Date();
 		const date = d.getDate();
-
 		return date;
 	}
 
 	const getMounth = () => {
 		const d = new Date();
 		const month = d.getMonth() + 1;
-
 		return month;
 	}
 
+	const getYear = () => {
+		const d = new Date();
+		const year = d.getYear();
+		return year;
+	}
+
+	const daysInMonth = (month, year) => {
+		return new Date(getYear(), getMounth(), 0).getDate();
+	}
+
 	const CustomTooltip = (active) => {
+		const monthDays = daysInMonth();
 		const dateLabel = getDate() + active.label;
 		const dateTemp = active.payload[0]?.payload;
 		const dateMinTemp = dateTemp?.temp?.min;
@@ -32,14 +39,16 @@ export default function DailyChart(props) {
 		const dateIconTemp = dateTemp?.weather[0]?.icon;
 		const dateIconDescription = dateTemp?.weather[0]?.description;
 
-		return <>
-			<TooltipCustom>
+		return <TooltipCustom>
 				<div className="flex justify-around items-center">
 				{(dateTemp)? 
 					<>
 						<div className="flex flex-col text-lg">
 							<h4 className="font-bold">
-								{dateLabel}/{getMounth()}
+								{(dateLabel <= monthDays) 
+									? `${dateLabel}/${getMounth()}`
+									: `${(dateLabel-1).toString().substring(1)}/${(getMounth()+1)}`
+								}
 							</h4>
 							<div>
 								<img 
@@ -59,17 +68,17 @@ export default function DailyChart(props) {
 						</div>
 					</>
 					:
-					<div className="mt-4">
-						Click in line above, to see day details
-					</div>
+					<span>
+						{(isMobile) ? 
+							'Click in line above, to see day details'
+							: 
+							'Click or hover in line above,  to see day details'
+						}
+					</span>
 				} 
 				</div>
-				
-
-				
-			
 			</TooltipCustom>
-		</>;
+		;
 	}
 
     return(

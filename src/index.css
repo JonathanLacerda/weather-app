@@ -4,7 +4,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 .text-condensed {
     font-family: 'Raleway';
 }
@@ -30,7 +29,7 @@
 .recharts-tooltip-wrapper.recharts-tooltip-wrapper-left.recharts-tooltip-wrapper-bottom,
 .recharts-tooltip-wrapper.recharts-tooltip-wrapper-left.recharts-tooltip-wrapper-top{
     transform: none !important;
-    bottom: -16px;
+    bottom: -80px;
     top: auto !important;
     width: 100%;
     visibility: visible !important;
@@ -46,4 +45,8 @@ path.recharts-curve.recharts-tooltip-cursor {
 
 circle.recharts-dot.recharts-line-dot {
     visibility: hidden;
+}
+
+svg {
+    cursor: crosshair;
 }

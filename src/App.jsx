@@ -12,7 +12,8 @@ import {
   GraphicContainer,
   MinMaxContainer,
   DiarySliderConteiner,
-  Title
+  Title,
+  Loader
 } from './styles/styles';
 import './index.css';
 
@@ -20,9 +21,6 @@ import HourSlider from './components/HourSlider/HourSlider';
 import DailyChart from './components/DailyChart/DailyChart';
 import MaxMin from './components/MaxMin/MaxMin';
 
-import { ImLocation } from 'react-icons/im';
-import { FaWind } from 'react-icons/fa';    
-import { GiWaterDrop } from 'react-icons/gi';
 import { BsDropletHalf } from 'react-icons/bs';
 
 import {WiStrongWind} from 'react-icons/wi';
@@ -35,6 +33,7 @@ function App() {
   const didMount = useRef(false);
   const [dataWeather, setDataWeather] = useState({});
   const [dataUser, setDataUser] = useState({});
+  const load = Object.keys(dataWeather).length > 1;
   
     useEffect(() => {
         apiGeoLocation().then((res) => {
@@ -56,8 +55,8 @@ function App() {
   <>
     <GlobalStyle/>
     <BackgroundAppContainer>
-        <Wrapper className="container container-wind mx-auto text-center font-bold">
-            {Object.keys(dataWeather).length > 1 ? 
+        <Wrapper className={`container container-wind mx-auto text-center font-bold ${!load ? 'flex items-center' : ''}`}>
+            { load ? 
                 <>
                     <h2 className='text-4xl font-thin2'>
                         {dataUser.city} 
@@ -87,7 +86,7 @@ function App() {
                         <HourSlider data={dataWeather.hourly}/>
                     </DiarySliderConteiner>
                     <Title>
-                        Next Days
+                        Next 7 Days
                         <span></span>
                     </Title>
                     <GraphicContainer>
@@ -95,9 +94,8 @@ function App() {
                     </GraphicContainer>
                 </>
             : 
-                'CARREGANDO'
+                <Loader />
             }
-
         </Wrapper>
     </BackgroundAppContainer>
   </>
