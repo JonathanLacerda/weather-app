@@ -40,3 +40,12 @@ To run in localhost:
 
 - [@JonathanLacerda](https://www.github.com/JonathanLacerda)
 
+
+### To Fix
+- Graph Heigth in height
+
+### Next Steps
+- Save Preferences
+- Search Locations
+
+
