@@ -31,7 +31,7 @@ export const Wrapper = styled.section`
 	margin-top: 5vh;
 
 	@media(min-width: 680px) {
-		width: 30vw;
+		width: 20vw;
 	}
 `;
 
