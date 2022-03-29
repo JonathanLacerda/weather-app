@@ -31,6 +31,10 @@ To run in localhost:
 
 **Deploy:** Netlify
 
+### API
+
+[Open Weather](https://openweathermap.org/api)
+
 
 ### Author
 
