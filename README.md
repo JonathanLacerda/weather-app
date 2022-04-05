@@ -15,7 +15,7 @@ A simple, elegant and clean way to see the weather forecast for your location.
 
 To install dependences: 
 ```bash
-  yarn install or npm install
+  yarn or npm install
 ```
 
 To run in localhost:
