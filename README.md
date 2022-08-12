@@ -3,7 +3,7 @@
 
 B8one front end job challenge
 
-[Link APP](https://celebrated-bunny-b63c4d.netlify.app/)
+[Link APP]([https://celebrated-bunny-b63c4d.netlify.app/](https://b8one-teste.netlify.app/))
 
 ![image](https://user-images.githubusercontent.com/2346867/184325825-047f5424-a01e-4f35-9433-20f93b1a00c8.png)
 
